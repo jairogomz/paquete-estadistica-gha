@@ -1,7 +1,14 @@
 function promedio(arr) {
-  if (!Array.isArray(arr) || arr.length === 0) {
-  return arr.reduce((a, b) => a + b, 0) / arr.length;
+  if (!Array.isArray(arr)) {
+    throw new Error('El argumento debe ser un array');
   }
+  if (arr.length === 0) {
+    throw new Error('El array no puede estar vacío');
+  }
+  if (!arr.every(num => typeof num === 'number' && !isNaN(num))) {
+    throw new Error('Todos los elementos deben ser números');
+  }
+  return arr.reduce((a, b) => a + b, 0) / arr.length;
 }
 
 function desviacionEstandar(arr) {
